@@ -2,18 +2,26 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
 	"os"
 
+	"github.com/google/uuid"
 	"github.com/redis/go-redis/v9"
 )
 
 var ctx = context.Background()
 
+type Event struct {
+	ID      string `json:"id"`
+	Message string `json:"message"`
+	Time    string `json:"time"`
+}
+
 func main() {
-	redisAddr := os.Getenv("REDID_ADDR")
+	redisAddr := os.Getenv("REDIS_ADDR")
 	if redisAddr == "" {
 		redisAddr = "redis:6379"
 	}
@@ -28,11 +36,21 @@ func main() {
 			http.Error(w, "missing msg param", http.StatusBadRequest)
 			return
 		}
-		if err := rdb.LPush(ctx, "events", msg).Err(); err != nil {
+
+		ev := Event{
+			ID:      uuid.New().String(),
+			Message: msg,
+			Time:    "",
+		}
+
+		data, _ := json.Marshal(ev)
+
+		if err := rdb.LPush(ctx, "events", data).Err(); err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
-		fmt.Fprintf(w, "Queued message: %s\n", msg)
+
+		fmt.Fprintf(w, "event_id=%s\n", ev.ID)
 	})
 
 	log.Println("Producer running on :8080")
