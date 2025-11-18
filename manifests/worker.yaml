@@ -15,4 +15,7 @@ spec:
       containers:
         - name: worker
           image: nobletk/worker:v1
-
+          imagePullPolicy: Always
+          env:
+            - name: REDIS_ADDR
+              value: "redis:6379"
