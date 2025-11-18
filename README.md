@@ -18,12 +18,12 @@ It uses three services:
 
 ## Table of Contents
 
- -[Architecture Overview](#-architecture-overview)
- -[Components](#-components)
- -[End-to-End Flow](#-end-to-end-flow)
- -[Local Development](#-local-development)
- -[Local Testing](#-local-testing)
- -[Kubernetes Deployment)(#-kubernetes-deployment)
+ - [Architecture Overview](#-architecture-overview)
+ - [Components](#-components)
+ - [End-to-End Flow](#-end-to-end-flow)
+ - [Local Development](#-local-development)
+ - [Local Testing](#-local-testing)
+ - [Kubernetes Deployment](#-kubernetes-deployment)
 
 ## Architecture Overview
 
