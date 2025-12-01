@@ -1,4 +1,4 @@
-# Message broker Go Application with Redis 
+# Go Redis Queue 
 
 A task simulation queue written in **GO** to create **REST** APIs, and using **Redis** as a lightweight message broker and key-value store in this event-driven architecture project for producing, processing, and retrieving tasks.
 The system is designed to show:
@@ -18,11 +18,11 @@ It uses four services:
 
 ## Table of Contents
 
- - [Architecture Overview](#-architecture-overview)
- - [Components](#-components)
- - [Local Development](#-local-development)
- - [Local Testing](#-local-testing)
- - [Kubernetes Deployment](#-kubernetes-deployment)
+ - [Architecture Overview](#architecture-overview)
+ - [Components](#components)
+ - [Local Development](#local-development)
+ - [Local Testing](#local-testing)
+ - [Kubernetes Deployment](#kubernetes-deployment)
 
 ## Architecture Overview
 
